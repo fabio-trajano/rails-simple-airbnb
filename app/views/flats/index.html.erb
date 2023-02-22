@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <h2 style="font-size: 20px;">All our Flats</h2>
+  <p><%= "All #{@flats.count} flats" %></p>
+</div>
+<hr>
+<div class="container">
+  <div class="row">
+    <% @flats.each do |flat| %>
+    <div class="col-md-4">
+      <div class="card mx-2 mb-4 bg-light shadow" style="">
+        <img src="https://a0.muscache.com/im/pictures/8b624fc9-48e2-4cf6-99d2-6345aa5c4095.jpg?im_w=960" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= flat.name %></h5>
+          <p class="card-text"><%= flat.description %></p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <p class="badge bg-airbnb rounded-pill mx-3"> <%= "$ #{flat.price_per_night}" %></p>
+            <p class="badge bg-airbnb rounded-pill mx-3"> <%= "Guests: #{flat.number_of_guests}" %></p>
+          </div>
+        </div>
+
+        <div class="card-body py-1 mb-3">
+
+          <%= link_to "More info", flat_path(flat), class: "btn btn-sm btn-outline-secondary"  %>
+          <%= link_to "Edit", edit_flat_path(flat), class: "btn btn-sm btn-outline-secondary mx-2 px-3"  %>
+          <%= link_to "Remove", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-sm btn-outline-danger"  %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
